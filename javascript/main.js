@@ -1,6 +1,6 @@
 /* 1. Grab the input value */
-var button = document.querySelector(".js-go");
-document.querySelector(".js-go").addEventListener('click', function() {
+var button = document.querySelector("button");
+button.addEventListener('click', function() {
 var input = document.querySelector("input").value;
 getInput(input);
 });
@@ -9,7 +9,7 @@ document.querySelector(".js-userinput").addEventListener('keyup', function(e) {
     var input = document.querySelector("input").value;
 
     if (e.which === 13) {
-        pushToDOM(input);
+        getInput(input);
     }
 });
 
@@ -35,7 +35,7 @@ function pushToDOM(input){
 
     var response = JSON.parse(input);
     var f = document.querySelector(".js-container");
-    var imageUrls = response.data;
+    var result = document.querySelector(".searchresults");
     clear(f);
     clear(result);
 
@@ -47,4 +47,8 @@ function pushToDOM(input){
     result.innerHTML = src.length + " results found";
     f.innerHTML += "<img src=\"" + src + "\" class=\"container-image\">";
     });
+
+    function clear(element) {
+        element.innerHTML = "";
+    }
 }
